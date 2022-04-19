@@ -59,6 +59,10 @@ public class OrderlyCharacterRule implements Rule {
             sum += difference;
             chars[rear] = difference;
             rear = (rear + 1) % this.arrayLength;
+            if (difference == 0) {
+                front = rear;
+                sum = 0;
+            }
             if ((rear + 1) % this.arrayLength == front) {
                 if (sum == this.orderlyCharacterLength) {
                     return false;

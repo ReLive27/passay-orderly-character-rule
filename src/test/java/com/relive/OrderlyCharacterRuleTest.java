@@ -20,5 +20,9 @@ public class OrderlyCharacterRuleTest {
         PasswordData passwordData = new PasswordData("Admin123456");
         RuleResult validate = passwordValidator.validate(passwordData);
         Assert.assertEquals(validate.isValid(), false);
+
+        passwordData.setPassword("Admin1124");
+        RuleResult validate1 = passwordValidator.validate(passwordData);
+        Assert.assertEquals(validate1.isValid(), true);
     }
 }
