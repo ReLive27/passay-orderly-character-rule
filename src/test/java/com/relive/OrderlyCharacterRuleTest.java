@@ -7,7 +7,7 @@ import org.passay.PasswordValidator;
 import org.passay.RuleResult;
 
 /**
- * @author: ReLive
+ * @author: ReLive27
  * @date: 2022/4/18 4:08 下午
  */
 public class OrderlyCharacterRuleTest {
@@ -17,7 +17,7 @@ public class OrderlyCharacterRuleTest {
         //限制连续有序字符长度不超过3
         OrderlyCharacterRule orderlyCharacterRule = new OrderlyCharacterRule(3);
         PasswordValidator passwordValidator = new PasswordValidator(orderlyCharacterRule);
-        PasswordData passwordData = new PasswordData("Admin123456");
+        PasswordData passwordData = new PasswordData("abdbcd");
         RuleResult validate = passwordValidator.validate(passwordData);
         Assert.assertEquals(validate.isValid(), false);
 

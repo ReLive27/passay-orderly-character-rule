@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * @author: ReLive
+ * @author: ReLive27
  * @date: 2022/4/18 12:18 下午
  */
 public class OrderlyCharacterRule implements Rule {
@@ -22,8 +22,8 @@ public class OrderlyCharacterRule implements Rule {
         if (length < 2) {
             throw new IllegalArgumentException("argument must be greater than two");
         }
-        this.orderlyCharacterLength = length;
-        this.arrayLength = length + 1;
+        this.orderlyCharacterLength = length - 1;
+        this.arrayLength = length;
         this.chars = new int[this.arrayLength];
     }
 
@@ -55,7 +55,7 @@ public class OrderlyCharacterRule implements Rule {
         int length = c.length;
         int sum = 0;
         for (int i = 0; i < length - 1; i++) {
-            int difference = Math.abs(c[i + 1] - c[i]);
+            int difference = c[i + 1] - c[i];
             sum += difference;
             chars[rear] = difference;
             rear = (rear + 1) % this.arrayLength;
@@ -64,7 +64,7 @@ public class OrderlyCharacterRule implements Rule {
                 sum = 0;
             }
             if ((rear + 1) % this.arrayLength == front) {
-                if (sum == this.orderlyCharacterLength) {
+                if (Math.abs(sum) == this.orderlyCharacterLength) {
                     return false;
                 }
                 sum -= chars[front];
