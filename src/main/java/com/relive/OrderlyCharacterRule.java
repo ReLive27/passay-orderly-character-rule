@@ -54,6 +54,7 @@ public class OrderlyCharacterRule implements Rule {
         char[] c = password.toCharArray();
         int length = c.length;
         int sum = 0;
+        int sameCount = 1;
         for (int i = 0; i < length - 1; i++) {
             int difference = c[i + 1] - c[i];
             sum += difference;
@@ -69,6 +70,14 @@ public class OrderlyCharacterRule implements Rule {
                 }
                 sum -= chars[front];
                 front = (front + 1) % this.arrayLength;
+            }
+            if (c[i + 1] == c[i]) {
+                sameCount++;
+                if (sameCount == this.arrayLength) {
+                    return false;
+                }
+            } else {
+                sameCount = 1;
             }
         }
         return true;
